@@ -16,16 +16,36 @@ box= boxes[0]
 # print (f'result : {boxes.xyxy}')
 # print (f'data : {boxes.data}')
 # print (f'conf : {boxes.conf}')
-print (f'conf : {boxes.cls}')
+# print (f'conf : {boxes.cls}')
 # print (f'result : {box.xyxy}')
 # print (f'data : {box.data}')
 # print (f'conf : {box.conf}')
 
-model_result_list = (boxes.cls).numpy())
+model_result_list = (boxes.cls).numpy()
 
 model_names = (model.names)
 
-for key,values in model_names:
+result = {i: model_names[model_result_list[i]] for i in range(len(model_result_list))}
+print(result)
+
+from collections import Counter
+counts = Counter(result.values())
+result_dict = dict(counts)
+print(result_dict)
+
+text = ''
+for key, value in result_dict.items():
+    text += f'{value}{key}\n'
+
+print(text)
+
+
+from gtts import gTTS
+
+tts = gTTS(text,lang='en', slow=False)
+tts.save('text.mp3')
+
+
 
 
 
