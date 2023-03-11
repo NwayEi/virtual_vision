@@ -1,17 +1,51 @@
 ## pip install roboflow
-## pip install ultralytics
-
-# from ultralytics import YOLO
-
-# model = YOLO('yolov8n.pt')  # load a pretrained model (recommended for training)
-
-# # Use the model
-# # results = model('https://ultralytics.com/images/bus.jpg')  # predict on an image
-
-# print (f'this is result {model}')
+# pip install ultralytics
+##pyenv virtualenv 3.10.6 virtualvision
+##pyenv local virtualvision
 
 
+from ultralytics import YOLO
+
+model = YOLO('yolov8n.pt')  # load a pretrained model (recommended for training)
+
+# Use the model
+results = model('https://ultralytics.com/images/bus.jpg')  # predict on an image
+
+boxes=results[0].boxes
+box= boxes[0]
+# print (f'result : {boxes.xyxy}')
+# print (f'data : {boxes.data}')
+# print (f'conf : {boxes.conf}')
+print (f'conf : {boxes.cls}')
+# print (f'result : {box.xyxy}')
+# print (f'data : {box.data}')
+# print (f'conf : {box.conf}')
+
+model_result_list = (boxes.cls).numpy())
+
+model_names = (model.names)
+
+for key,values in model_names:
 
 
-import ultralytics
-ultralytics.checks()
+
+
+
+
+
+
+
+
+
+
+
+# import ultralytics
+# ultralytics.checks()
+
+
+#   system
+#   3.10.6
+#   3.10.6/envs/lewagon
+#   3.10.6/envs/taxifare-env
+# * lewagon (set by /Users/thm/.pyenv/version)
+#   taxifare-env
